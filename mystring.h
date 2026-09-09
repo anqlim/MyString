@@ -280,8 +280,6 @@ public:
 private:
     int index_from_iterator(iterator pos);
     int index_from_iterator(const_iterator pos) const;
-    int index_from_iterator(reverse_iterator pos);
-    int index_from_iterator(const_reverse_iterator pos) const;
 
     // mystring_core.cpp
     void init_from_cstr(const char* source, std::size_t count);

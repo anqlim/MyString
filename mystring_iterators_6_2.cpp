@@ -276,12 +276,6 @@ MyString::const_reverse_iterator MyString::rcend() const {
 }
 
 int MyString::index_from_iterator(iterator pos) {
-    if (data_ == nullptr) {
-        if (pos.ptr_ != nullptr) {
-            throw std::out_of_range("iterator is out of range");
-        }
-        return 0;
-    }
     if (pos.ptr_ < data_ || pos.ptr_ > data_ + size_) {
         throw std::out_of_range("iterator is out of range");
     }
@@ -289,33 +283,7 @@ int MyString::index_from_iterator(iterator pos) {
 }
 
 int MyString::index_from_iterator(const_iterator pos) const {
-    if (data_ == nullptr) {
-        if (pos.ptr_ != nullptr) {
-            throw std::out_of_range("iterator is out of range");
-        }
-        return 0;
-    }
     if (pos.ptr_ < data_ || pos.ptr_ > data_ + size_) {
-        throw std::out_of_range("iterator is out of range");
-    }
-    return static_cast<int>(pos.ptr_ - data_);
-}
-
-int MyString::index_from_iterator(reverse_iterator pos) {
-    if ((data_ == nullptr && pos.ptr_ == nullptr) || (data_ != nullptr && pos.ptr_ == data_ - 1)) {
-        return 0;
-    }
-    if (data_ == nullptr || pos.ptr_ < data_ || pos.ptr_ >= data_ + size_) {
-        throw std::out_of_range("iterator is out of range");
-    }
-    return static_cast<int>(pos.ptr_ - data_);
-}
-
-int MyString::index_from_iterator(const_reverse_iterator pos) const {
-    if ((data_ == nullptr && pos.ptr_ == nullptr) || (data_ != nullptr && pos.ptr_ == data_ - 1)) {
-        return 0;
-    }
-    if (data_ == nullptr || pos.ptr_ < data_ || pos.ptr_ >= data_ + size_) {
         throw std::out_of_range("iterator is out of range");
     }
     return static_cast<int>(pos.ptr_ - data_);

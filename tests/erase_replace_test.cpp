@@ -17,3 +17,16 @@ TEST(EraseReplace, Replace) {
     str.replace(2, 2, "ZZZ");
     ExpectCString(str, "abZZZef");
 }
+
+TEST(EraseReplace, ReplaceOnEmptyStringWithNullData) {
+    MyString str;
+    str.replace(0, 0, "");
+    EXPECT_TRUE(str.empty());
+    EXPECT_EQ(str.c_str()[0], '\0');
+
+    str.clear();
+    str.shrink_to_fit();
+    str.replace(0, 0, "");
+    EXPECT_TRUE(str.empty());
+    EXPECT_EQ(str.capacity(), 0U);
+}

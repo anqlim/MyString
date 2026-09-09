@@ -9,9 +9,6 @@
 namespace {
 
 void delete_subtree(AhoCorasickNode* node) {
-    if (node == nullptr) {
-        return;
-    }
     for (auto& child : node->children) {
         delete_subtree(child.second);
     }

@@ -1,33 +1,84 @@
-# C++ build artifacts
+# --- C/C++ object files & static libs ---
 *.o
 *.obj
 *.d
 *.a
+*.lib
+
+# --- shared libraries (build on target machine; 6.3 DLL is not committed) ---
 *.so
-*.cpython-*.so
 *.dylib
 *.dll
 *.pyd
+*.cpython-*.so
 
-# executables
+# --- executables (macOS / Linux / Windows) ---
 /a.out
 /main
 /mystring_test
 /mystring_test.exe
+*.exe
 
-# Python
+# MSVC / CMake link & debug artifacts (6.3 on Windows)
+*.pdb
+*.ilk
+*.exp
+*.idb
+*.ipdb
+*.iobj
+
+# --- Python wrapper build ---
 __pycache__/
 *.py[cod]
 *.egg-info/
-build/
-dist/
+/build/
+/dist/
 
-# macOS / IDE
+# --- macOS / IDE ---
 .DS_Store
 .idea/
 .vscode/
 *.swp
 
-# Graph
+# Visual Studio (local user settings only; keep .sln / .vcxproj in repo)
+.vs/
+*.vcxproj.user
+*.suo
+*.user
+*.userosscache
+
+# CMake out-of-tree builds
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+cmake-build-*/
+
+# MSVC output dirs (typical VS / MSBuild layout)
+/x64/
+/x86/
+/Debug/
+/Release/
+/out/
+
+# Graph / LLVM IR (optional tooling)
 *.bc
 *.dot
+
+# --- AFL++ fuzzing (regenerate after clone) ---
+/fuzz/mystring_fuzz
+/fuzz/mystring_fuzz_cov
+/fuzz/build/
+/fuzz/coverage/
+/fuzz/findings/
+/fuzz/corpus/*
+!/fuzz/corpus/.gitkeep
+
+# llvm-cov profiles (anywhere in tree)
+*.profraw
+*.profdata
+default.profdata
+default.profraw
+
+# Windows junk
+Thumbs.db
+Desktop.ini

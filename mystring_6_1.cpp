@@ -73,10 +73,6 @@ MyString::MyString(double value) {
 
     char buffer[64];
     const int length = std::snprintf(buffer, sizeof(buffer), "%g", value);
-    if (length < 0) {
-        throw MyStringConversionError("failed to convert double to string");
-    }
-
     init_from_cstr(buffer, length);
 }
 

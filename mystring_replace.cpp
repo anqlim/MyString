@@ -38,7 +38,9 @@ void MyString::replace_impl(int index, std::size_t count, const char* source, st
     }
 
     size_ = size_ - count + replacement_length;
-    data_[size_] = '\0';
+    if (data_ != nullptr) {
+        data_[size_] = '\0';
+    }
 }
 
 MyString& MyString::replace(int index, int count, const char* source) {
