@@ -1,0 +1,33 @@
+# C++ build artifacts
+*.o
+*.obj
+*.d
+*.a
+*.so
+*.cpython-*.so
+*.dylib
+*.dll
+*.pyd
+
+# executables
+/a.out
+/main
+/mystring_test
+/mystring_test.exe
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# macOS / IDE
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Graph
+*.bc
+*.dot
