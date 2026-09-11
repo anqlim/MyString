@@ -66,8 +66,7 @@ std::vector<std::uint8_t> read_input_file(const char* path) {
     if (!in) {
         return {};
     }
-    return std::vector<std::uint8_t>(
-        std::istreambuf_iterator<char>(in), std::istreambuf_iterator<char>());
+    return std::vector<std::uint8_t>(std::istreambuf_iterator<char>(in), std::istreambuf_iterator<char>());
 }
 
 MyString make_from_cstr(const std::string& s) {

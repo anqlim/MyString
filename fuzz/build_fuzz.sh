@@ -38,8 +38,7 @@ SOURCES=(
 
 COMMON_FLAGS=(
     -std=c++17
-    -Wall
-    -Wextra
+    -w
     -I.
     -g
     -fno-omit-frame-pointer
