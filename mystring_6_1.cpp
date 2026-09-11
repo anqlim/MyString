@@ -125,12 +125,12 @@ double MyString::to_float() const {
     return value;
 }
 
-std::basic_ofstream<char>& operator<<(std::basic_ofstream<char>& os, const MyString& str) {
+std::ostream& operator<<(std::ostream& os, const MyString& str) {
     os.write(str.c_str(), str.size());
     return os;
 }
 
-std::basic_ifstream<char>& operator>>(std::basic_ifstream<char>& is, MyString& str) {
+std::istream& operator>>(std::istream& is, MyString& str) {
     str.clear();
 
     int ch = is.get();

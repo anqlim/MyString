@@ -5,6 +5,7 @@
 #include <exception>
 #include <fstream>
 #include <initializer_list>
+#include <iostream>
 #include <string>
 #include <utility>
 
@@ -168,8 +169,8 @@ public:
     std::pair<int, int> find_any(std::initializer_list<MyString> patterns, int start = 0) const;
     int to_int() const;
     double to_float() const;
-    friend std::basic_ofstream<char>& operator<<(std::basic_ofstream<char>& os, const MyString& str);
-    friend std::basic_ifstream<char>& operator>>(std::basic_ifstream<char>& is, MyString& str);
+    friend std::ostream& operator<<(std::ostream& os, const MyString& str);
+    friend std::istream& operator>>(std::istream& is, MyString& str);
 
     // mystring_iterators_6_2.cpp
     class iterator {

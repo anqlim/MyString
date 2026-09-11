@@ -23,7 +23,7 @@ SOURCES=(
     mystring_iterators_6_2.cpp
 )
 
-clang++ -std=c++17 -Wall -Wextra -I. -Itests \
+clang++ -std=c++17 -w -I. -Itests \
     tests/*_test.cpp "${SOURCES[@]}" \
     -I"${GTEST_PREFIX}/include" \
     -L"${GTEST_PREFIX}/lib" \
@@ -32,5 +32,7 @@ clang++ -std=c++17 -Wall -Wextra -I. -Itests \
 
 ./mystring_test
 
+PYTHON="${PYTHON:-/Applications/Xcode.app/Contents/Developer/usr/bin/python3}"
+
 ./build_wrapper.sh
-python3 mystring_test.py
+"$PYTHON" mystring_test.py

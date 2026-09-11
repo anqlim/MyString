@@ -57,7 +57,8 @@ PYBIND11_MODULE(mystring, m) {
         .def("insert", py::overload_cast<int, const MyString&, int, int>(&MyString::insert),
              py::return_value_policy::reference_internal)
 
-        .def("erase", &MyString::erase, py::return_value_policy::reference_internal)
+        .def("erase", py::overload_cast<int, int>(&MyString::erase),
+             py::return_value_policy::reference_internal)
 
         .def("replace", py::overload_cast<int, int, const char*>(&MyString::replace),
              py::return_value_policy::reference_internal)

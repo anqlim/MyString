@@ -8,7 +8,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PYTHON="/opt/homebrew/bin/python3.12"
 DOT_UNMANGLER="${SCRIPT_DIR}/dot_unmangler.py"
 GRAPH_DIR="callgraph"
-CXX_STD=( -std=c++17 -I. )
+CXX_FLAGS=(-std=c++17 -w -I.)
 
 SOURCES=(
     mystring_6_1.cpp
@@ -34,7 +34,7 @@ rm -f "${GRAPH_DIR}"/*.bc "${GRAPH_DIR}"/*.dot "${GRAPH_DIR}"/*.png
 echo "[1/5] Compile sources to LLVM bitcode..."
 for src in "${SOURCES[@]}"; do
     base="${src%.cpp}"
-    "${LLVM_BIN}/clang++" "${CXX_STD[@]}" -emit-llvm -c "${src}" -o "${GRAPH_DIR}/${base}.bc"
+    "${LLVM_BIN}/clang++" "${CXX_FLAGS[@]}" -emit-llvm -c "${src}" -o "${GRAPH_DIR}/${base}.bc"
 done
 
 echo "[2/5] Link bitcode..."
