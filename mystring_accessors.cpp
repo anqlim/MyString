@@ -1,10 +1,12 @@
 #include "mystring.h"
 
 char& MyString::operator[](int index) {
+    check_index(index);
     return data_[index];
 }
 
 const char& MyString::operator[](int index) const {
+    check_index(index);
     return data_[index];
 }
 

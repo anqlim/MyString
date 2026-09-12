@@ -96,6 +96,10 @@ PYBIND11_MODULE(mystring, m) {
         .def("__eq__", [](const MyString& lhs, const char* rhs) { return lhs == MyString(rhs); })
         .def("__ne__", [](const MyString& lhs, const MyString& rhs) { return lhs != rhs; })
         .def("__ne__", [](const MyString& lhs, const char* rhs) { return lhs != MyString(rhs); })
+        .def("__lt__", [](const MyString& lhs, const MyString& rhs) { return lhs < rhs; })
+        .def("__le__", [](const MyString& lhs, const MyString& rhs) { return lhs <= rhs; })
+        .def("__gt__", [](const MyString& lhs, const MyString& rhs) { return lhs > rhs; })
+        .def("__ge__", [](const MyString& lhs, const MyString& rhs) { return lhs >= rhs; })
         .def("__getitem__", [](const MyString& self, int index) { return self[index]; })
         .def("__setitem__", [](MyString& self, int index, char ch) { self[index] = ch; })
 

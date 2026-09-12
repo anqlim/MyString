@@ -9,9 +9,16 @@ void MyString::insert_cstr(int index, const char* source, std::size_t count) {
         return;
     }
 
+    const char* insertion = source;
+    MyString temp;
+    if (data_ != nullptr && source != nullptr && source >= data_ && source < data_ + size_) {
+        temp.init_from_cstr(source, count);
+        insertion = temp.data_;
+    }
+
     ensure_capacity(size_ + count + 1);
     std::memmove(data_ + index + count, data_ + index, size_ - index);
-    std::memcpy(data_ + index, source, count);
+    std::memcpy(data_ + index, insertion, count);
     size_ += count;
     data_[size_] = '\0';
 }
